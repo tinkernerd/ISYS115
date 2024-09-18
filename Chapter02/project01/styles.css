@@ -114,3 +114,19 @@ footer {
    line-height: 1.2;
    padding: 0px 20px;
 }
+
+.temp {
+    font-size: 2em;
+    padding: 10px;
+}
+
+.blue {
+   background: blue;
+}
+
+.yellow {
+   background: yellow;
+}
+.red {
+   background: red;
+}
