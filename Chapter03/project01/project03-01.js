@@ -10,6 +10,7 @@
 
       Filename: project03-01.js
 */
+
 // Declare a variable named menuItems containing the collection of HTML elements belonging to the menuItem class using the getElementsByClassName() method.
 var menuItems = document.getElementsByClassName("menuItem");
 // Add an event listener to each item in the menuItems collection. When an item is clicked, run the calcTotal() function.
