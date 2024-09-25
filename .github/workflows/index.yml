@@ -1,4 +1,4 @@
-name: Update Index and Chapter Pages
+name: Auto Generate Index and Chapters
 
 on:
   push:
@@ -6,54 +6,35 @@ on:
       - main  # Adjust based on your branch
 
 jobs:
-  generate-index-and-chapter-pages:
+  build:
+    name: Generate index and chapter pages
     runs-on: ubuntu-latest
     permissions:
       contents: write
       packages: write
 
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v3
-        
-      - name: Setup Node.js (optional, if needed for script)
-        uses: actions/setup-node@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
         with:
-          node-version: '16'
+          python-version: '3.x'
 
-      - name: Scan for projects and generate index.html and chapter pages
+      - name: Install dependencies (if any)
         run: |
-          # Start creating the main index.html file
-          echo "<!DOCTYPE html>" > index.html
-          echo "<html>" >> index.html
-          echo "<head><title>Projects Index</title></head>" >> index.html
-          echo "<body>" >> index.html
-          echo "<h1>Project Index</h1>" >> index.html
+          python -m pip install --upgrade pip
 
-          # Loop through chapter folders and create chapter#.html files
-          for chapter in $(find . -type d -name 'Chapter*'); do
-            chapter_name=$(basename "$chapter")
-            chapter_number=${chapter_name//[^0-9]/}  # Extract the chapter number
+      - name: Generate Index and Chapter Files
+        run: |
+          python ./.github/docgen.py
 
-            # Add link to chapter page in the main index
-            echo "<h2><a href=\"https://isys115.nicholasstull.com/${chapter_name}.html\">${chapter_name}</a></h2>" >> index.html
-
-            # Create the chapter#.html file
-            chapter_html="${chapter_name}.html"
-            echo "<!DOCTYPE html>" > $chapter_html
-            echo "<html>" >> $chapter_html
-            echo "<head><title>${chapter_name} Projects</title></head>" >> $chapter_html
-            echo "<body>" >> $chapter_html
-            echo "<h1>${chapter_name} Projects</h1>" >> $chapter_html
-
-            # Look into subdirectories (projects) within each chapter
-            for project_folder in $(find "$chapter" -mindepth 1 -type d); do
-              project_name=$(basename "$project_folder")
-
-              # Find HTML files within each project folder and add links to both the main index and chapter page
-              for project_file in $(find "$project_folder" -name '*.html'); do
-                project_file_nadd to it to build the github pager.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+      - name: Commit and Push
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        run: |
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
           git add index.html Chapter*.html
-          git commit -m "Update index.html and chapter pages with new projects"
-          git push
+          git diff --quiet && git diff --staged --quiet || (git commit -m "[Auto] Generated index and chapter pages"; git push)
