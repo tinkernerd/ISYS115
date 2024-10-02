@@ -1,0 +1,20 @@
+# Site settings
+title: ISYS115 
+email: nicholasp.stull@gmail.com
+description: "Course materials and notes for Stanford class CS231n: Convolutional Neural Networks for Visual Recognition."
+baseurl: ""
+repo: "https://github.com/tinkernerd/isys115"
+url: "https://isys115.nicholasstull.com"
+github_username: tinkernerd
+
+# Build settings
+markdown: kramdown
+permalink: pretty
+site_tree.file: map.md
+
+highlighter: rouge
+kramdown:
+  input: GFM
+  auto_ids: true
+  syntax_highlighter: rouge
+
