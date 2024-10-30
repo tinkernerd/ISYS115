@@ -1,4 +1,10 @@
 <header class="site-header">
-  <a class="site-title" href="{{ site.url }}">{{ site.title }}</a>
-  <a class="site-link" href="{{ site.repo }}">Github Repo</a>
+  {% if page.url == "/" %}
+    <a class="site-title centered" href="{{ site.url }}">{{ site.title }}</a>
+  {% else %}
+    <a class="home-button" href="{{ site.url }}">Home</a>
+    <a class="site-title" href="{{ site.url }}">{{ site.title }}</a>
+  {% endif %}
+  <!-- Sidebar Toggle Button -->
+  <button id="sidebar-toggle" class="sidebar-toggle hidden">☰ Menu</button>
 </header>

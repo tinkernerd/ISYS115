@@ -1,48 +1,57 @@
 <!DOCTYPE html>
 <html>
-
   {% include head.html %}
+  <body>
+      <!-- Include Header -->
+      {% include header.html %}
 
-    <body>
+      <div class="container">
+          <!-- Sidebar -->
+          {% include navbar.html %}
 
-      <script src="https://unpkg.com/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js"></script>
-      <script>addBackToTop({
-        backgroundColor: '#fff',
-        innerHTML: 'Back to Top',
-        textColor: '#333'
-      })</script>
-      <style>
-        #back-to-top {
-          border: 1px solid #ccc;
-          border-radius: 0;
-          font-family: sans-serif;
-          font-size: 14px;
-          width: 100px;
-          text-align: center;
-          line-height: 30px;
-          height: 30px;
-        }
-      </style>
-
-    {% include header.html %}
-
-    <div class="page-content">
-      <div class="wrap">
-      {{ content }}
+          <!-- Main Content (center) -->
+          <div class="main-content">
+              <div class="page-content">
+                  <div class="wrap">
+                      {{ content }}
+                  </div>
+              </div>
+          </div>
       </div>
-    </div>
 
-    {% include footer.html %}
+      <!-- Include Footer -->
+      {% include footer.html %}
 
-    <!-- mathjax -->
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">
-      // Make responsive
-      MathJax.Hub.Config({
-       "HTML-CSS": { linebreaks: { automatic: true } },
-       "SVG": { linebreaks: { automatic: true } },
-      });
-    </script>
+      <!-- JavaScript for Sidebar Toggle -->
+      <script>
+          document.addEventListener("DOMContentLoaded", function () {
+              const sidebarToggle = document.getElementById('sidebar-toggle');
+              const sidebar = document.querySelector('.sidebar');
 
-    </body>
+              // Hide sidebar initially if screen is small
+              function handleResize() {
+                  if (window.innerWidth <= 1080) {
+                      sidebar.style.display = 'none';
+                      sidebarToggle.classList.remove('hidden');
+                  } else {
+                      sidebar.style.display = 'block';
+                      sidebarToggle.classList.add('hidden');
+                  }
+              }
+
+              // Toggle sidebar visibility
+              sidebarToggle.addEventListener('click', function () {
+                  if (sidebar.style.display === 'none') {
+                      sidebar.style.display = 'block';
+                  } else {
+                      sidebar.style.display = 'none';
+                  }
+              });
+
+              // Handle initial state and resize
+              window.addEventListener('resize', handleResize);
+              handleResize();
+          });
+      </script>
+  </body>
 </html>

@@ -1,0 +1,83 @@
+// Light Mode (Default)
+body {
+    background-color: #fdfdfd;
+    color: #333333;
+}
+
+.site-header {
+    background-color: #387c3b;
+    color: #e0e0e0;
+
+    .home-button,
+    .site-title {
+        color: #e0e0e0;
+
+        &:hover {
+            color: #ffcc00;
+        }
+    }
+}
+
+.site-footer {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+
+    .footer-wrap a {
+        color: #90caf9;
+
+        &:hover {
+            color: #ffcc00;
+        }
+    }
+
+    .footer-bottom {
+        border-top: 1px solid #555555;
+        color: #333333;
+    }
+}
+
+// Dark Mode with Enhanced Colors
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #1f1f1f;
+        color: #e0e0e0;
+    }
+
+    .site-header {
+        background-color: #1f1f1f;
+        color: #ffcc00;
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background-color: #ffffff;
+        }
+
+        .home-button,
+        .site-title {
+            color: #ffcc00;
+
+            &:hover {
+                color: #ffa726;
+            }
+        }
+    }
+
+    .main-content {
+        background-color: #343434;
+        color: #e0e0e0;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .site-footer {
+        background-color: #1a1a1a;
+        color: #e0e0e0;
+    }
+}

@@ -2,7 +2,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Start jekyll (drafts, future) for codemunki.es",
+            "label": "Start jekyll (drafts, future)",
             "command": "jekyll",
             "args": [
                 "serve",
@@ -25,4 +25,3 @@
         }
     ]
 }
-

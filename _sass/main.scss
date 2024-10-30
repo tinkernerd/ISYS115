@@ -1,0 +1,14 @@
+// main.scss
+@use "modules/base";
+@use "modules/codeblock";
+@use "modules/footer";
+@use "modules/header";
+@use "modules/layout";
+@use "modules/main-content";
+@use "modules/nav";
+@use "modules/syntax";
+.container {
+    display: flex;
+    align-items: flex-start;
+    padding-top: 20px; // Space between header and container content
+}
