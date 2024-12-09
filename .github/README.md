@@ -1,6 +1,6 @@
 # Webpack Bootstrap5 Starter
 
-<img src="webpack-bootstrap.png" alt="Webpack Bootstrap5 Starter" />
+<img src="assets/webpack-bootstrap.png" alt="Webpack Bootstrap5 Starter" />
 
 A starter frontend boilerplate using Webpack 5, Bootstrap 5, SASS, PostCSS, Babel, ESLint, Stylelint, Prettier and more.
 
