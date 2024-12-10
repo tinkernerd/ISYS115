@@ -1,0 +1,87 @@
+@use "variables" as vars;
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    font-family: 'Open Sans', sans-serif;
+    font-display: swap;
+    box-sizing: border-box;
+    height: 100%; // Ensure the html element takes the full height of the viewport
+}
+
+body {
+    font-size: 1.6rem;
+    background-color: vars.$subtleBg;
+    color: vars.$defaultFont;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100%; // Ensure body fills at least the full height of the viewport
+    display: flex; // Set up flexbox
+    flex-direction: column; // Make it a vertical layout
+}
+
+header {
+    position: sticky; // Keeps the header visible when scrolling
+    top: 0; // Ensures it stays at the top
+    z-index: 10; // Keeps it above other elements
+    width: 100%;
+    background-color: vars.$subtleBg; // Matches your site background
+    padding: 1rem 0; // Adjust as needed for spacing
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); // Optional: Add a subtle shadow
+}
+
+main {
+    flex: 1; // Ensure main fills the available space
+    margin-top: vars.$header-height; // Add space equal to the header height
+    padding: 1rem; // Optional: Add internal padding for content
+}
+
+a {
+    transition: 0.1s linear;
+
+    &:hover {
+        color: vars.$primary;
+    }
+}
+
+p {
+    margin: 2rem 0;
+    line-height: 1.4em;
+
+    &:last-of-type {
+        margin-bottom: 0;
+    }
+}
+
+h1,
+h2 {
+    margin-bottom: 4rem;
+    max-width: 100%;
+    line-height: 1.1em;
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    h1 {
+        text-align: center;
+    }
+}
+
+.full-sized {
+    height: 100vh;
+    width: 100%;
+
+    img {
+        max-width: 200px;
+    }
+}
