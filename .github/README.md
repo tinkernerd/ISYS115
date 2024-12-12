@@ -4,6 +4,7 @@
 Either download and run or view the link at isys115.nicholasstull.com - currently api functions are not working until I learn about secrets. 
 What can I say ¯\\_(ツ)_//¯
 
+
 ## Local Dev
 
 1. ```git clone https://github.com/tinkernerd/isys115.git```
@@ -28,4 +29,18 @@ What can I say ¯\\_(ツ)_//¯
     5. Return and go to ```/src/assets/js/footer.js```
     6. Replace API Key in line 3. 
 
+## File Structure
 
+/src - source files
+- assets/
+    - js/ - javascript files
+    - img/ - images
+    - scss/ - gets converted into /dist/assets/css
+- views
+    - components/
+    - notes/
+    - projects/
+    - 404.html
+    - about.html
+    - contact.html
+    - index.html
