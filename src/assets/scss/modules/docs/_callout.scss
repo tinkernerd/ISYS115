@@ -1,3 +1,4 @@
+    
 .callout {
     border-radius: 8px; // Rounded corners
     padding: 1rem;
@@ -5,16 +6,12 @@
     max-width: 800px;
     font-size: 1rem;
     line-height: 1.5;
-
-    &.info {
-        border: 1px solid #387c3b; // Green border
-        background-color: #e6f7e6; // Light green background
-        color: #000000; // Black text for visibility
-    }
-
+    border-color: var(--info-border); // Dynamic border color
+    background-color: var(--info-background); // Dynamic background color
     p {
         margin: 0; // Remove default margin from paragraphs
-
+        color: var(--info-text); // Dynamic text color
+        
         strong {
             font-weight: bold; // Bold text for "Info:"
         }

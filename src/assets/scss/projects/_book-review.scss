@@ -1,5 +1,6 @@
-.book-review{
-    max-width: 400px;
+.book-review {
+    max-width: calc(100% + 20px); // Ensure container is 20px wider than the textarea
+    width: 400px;
     padding: 20px;
     margin-bottom: 20px;
     border: 1px solid #ddd;
@@ -8,12 +9,13 @@
     font-family: Arial, sans-serif;
 
     textarea {
-        width: 100%;
+        width: calc(100% - 20px); // Adjust textarea width to account for container padding
         padding: 10px;
         font-size: 14px;
         border: 2px solid #ddd;
         border-radius: 20px;
         resize: none;
+        color: var(--info-text); // Dynamic text color
     }
 
     #countLabel {

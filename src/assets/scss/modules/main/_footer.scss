@@ -1,13 +1,14 @@
-// Footer
 #footer {
     padding: 0.5rem 1rem;
     text-align: center;
-    position: fixed;
+    position: relative; // Let the footer naturally position itself
     bottom: 0;
-    width: calc(100% - 2rem);
+    width: 100%;
     background: #222;
     color: rgba(255, 255, 255, 0.8);
-    display: none;
+    display: block;
+    box-sizing: border-box;
+    margin-top: auto; // Push footer to the bottom when content is sparse
 
     a {
         color: #387c3b;

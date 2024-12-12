@@ -35,6 +35,44 @@ export const sidebar = () => {
         });
     }
 
-    // Call the function to activate the correct link
+    // Function to set up the sidebar toggle functionality
+    function setSidebarToggle() {
+        document.addEventListener("DOMContentLoaded", () => {
+            const headerLeft = document.querySelector(".header-left");
+            const sidebar = document.querySelector(".sidebar");
+            const logo = document.querySelector(".logo");
+
+            if (sidebar) {
+                // Create and insert the sidebar toggle button
+                const sidebarToggle = document.createElement("button");
+                sidebarToggle.id = "sidebar-toggle";
+                sidebarToggle.classList.add("sidebar-icon");
+                sidebarToggle.innerHTML = "☰";
+                headerLeft.insertBefore(sidebarToggle, logo);
+
+                // Add click event to toggle the sidebar
+                sidebarToggle.addEventListener("click", () => {
+                    if (sidebar.classList.contains("active")) {
+                        sidebar.classList.remove("active");
+                        setTimeout(() => {
+                            sidebar.style.visibility = "hidden";
+                        }, 300); // Match this duration to the CSS transition time
+                    } else {
+                        sidebar.style.visibility = "visible";
+                        sidebar.classList.add("active");
+                    }
+                });
+
+                // Adjust header styles for sidebar presence
+                headerLeft.classList.add("with-sidebar");
+            } else {
+                // Remove any styles specific to sidebar presence
+                headerLeft.classList.remove("with-sidebar");
+            }
+        });
+    }
+
+    // Call the functions to activate the correct link and set up the sidebar
     setActiveSidebarLink();
+    setSidebarToggle();
 };

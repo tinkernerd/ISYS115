@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>ISYS115 | Contact US</title>
+    <title>ISYS115 | Contact Us</title>
     <module href="/components/head.html"></module>
 </head>
 
@@ -11,33 +11,59 @@
     <div id="main">
         <h1>Contact The Tinkering Nerd</h1>
         <h2>Let’s Connect</h2>
-        <p>Have a question, feedback, or just want to say hi? Fill out the form below to get in touch with me. I will do my best to get back asap.</p>
+        <p>Have a question, feedback, or just want to say hi? Fill out the form below to get in touch with me. I will do
+            my best to get back asap.</p>
         <p class="motto">
             <em>“Stay curious, stay tinkering.”</em>
         </p>
         <div class="contact">
             <form onsubmit="sendContact(event)">
                 <div class="mb-3">
-                    <label for="emailInput" class="form-label">Enter your email address</label>
-                    <input type="email" class="form-control" id="emailInput">
+                    <label for="nameInput" class="form-label">Enter your name*</label>
+                    <input type="text" class="form-control" id="nameInput" required>
+                    <label for="emailInput" class="form-label">Enter your email address*</label>
+                    <input type="email" class="form-control" id="emailInput" required>
+                </div>
+                <div class="checkbox-group">
+                    <label>Feedback Options:</label><br>
+                    <input type="checkbox" id="suggestions" value="Suggestions">
+                    <label for="suggestions">Suggestions</label><br>
+                    <input type="checkbox" id="complaints" value="Complaints">
+                    <label for="complaints">Complaints</label><br>
+                    <input type="checkbox" id="praise" value="Praise">
+                    <label for="praise">Praise</label><br>
+                    <input type="checkbox" id="questions" value="Questions">
+                    <label for="questions">Questions</label><br>
+                    <input type="checkbox" id="other" value="Other">
+                    <label for="other">Other</label>
                 </div>
                 <div class="mb-3">
                     <label for="messageInput" class="form-label">Enter your message</label>
-                    <textarea class="form-control" id="messageInput" rows="3"></textarea>
+                    <textarea class="form-control" id="messageInput" rows="3" required></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
             <div id="errorMessages" class="error-messages"></div>
         </div>
-
-
+        <div class="summary" id="summary" style="display: none;">
+            <h3>Submission Summary</h3>
+            <p><strong>Name:</strong> <span id="summaryName"></span></p>
+            <p><strong>Email:</strong> <span id="summaryEmail"></span></p>
+            <p><strong>Contact Reasons:</strong> <span id="summaryType"></span></p>
+            <p><strong>Message:</strong> <span id="summaryMessage"></span></p>
+        </div>
     </div>
     <script>
-    async function sendContact(ev) {
-        ev.preventDefault();
+    async function sendContact(event) {
+        event.preventDefault();
 
+        const nameInput = document.getElementById('nameInput');
         const emailInput = document.getElementById('emailInput');
         const messageInput = document.getElementById('messageInput');
+        const checkboxes = document.querySelectorAll('.checkbox-group input[type="checkbox"]:checked');
+        const selectedReasons = Array.from(checkboxes).map(checkbox => checkbox.value).join(', ');
+
+        const senderName = nameInput.value.trim();
         const senderEmail = emailInput.value.trim();
         const senderMessage = messageInput.value.trim();
 
@@ -46,16 +72,29 @@
 
         try {
             // Validate inputs
+            if (!senderName) throw new Error('Name is required.');
             if (!senderEmail) throw new Error('Email address is required.');
             if (!validateEmail(senderEmail)) throw new Error('Invalid email format.');
+            if (!selectedReasons) throw new Error('Please select at least one reason.');
             if (!senderMessage) throw new Error('Message cannot be empty.');
+
+            // Update the summary section
+            document.getElementById('summaryName').textContent = senderName;
+            document.getElementById('summaryEmail').textContent = senderEmail;
+            document.getElementById('summaryType').textContent = selectedReasons;
+            document.getElementById('summaryMessage').textContent = senderMessage;
+
+            const summarySection = document.getElementById('summary');
+            summarySection.style.display = 'block';
 
             // Prepare webhook payload
             const webhookBody = {
                 embeds: [{
                     title: 'Contact Form Submitted',
                     fields: [
-                        { name: 'Sender', value: senderEmail },
+                        { name: 'Name', value: senderName },
+                        { name: 'Email', value: senderEmail },
+                        { name: 'Reasons', value: selectedReasons },
                         { name: 'Message', value: senderMessage },
                     ],
                 }],
@@ -74,9 +113,11 @@
                 throw new Error('Error sending the message to Discord.');
             }
 
-            // Clear form and show success message
+            // Clear form fields
+            nameInput.value = '';
             emailInput.value = '';
             messageInput.value = '';
+            checkboxes.forEach(checkbox => checkbox.checked = false);
             errorContainer.innerHTML = '<p class="success-message">I have received your message!</p>';
         } catch (error) {
             // Display error message
@@ -93,7 +134,8 @@
         return emailRegex.test(email);
     }
 
-</script>
+    </script>
+    <module href="/components/footer.html"></module>
 </body>
 
 </html>

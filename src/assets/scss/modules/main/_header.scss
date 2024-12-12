@@ -18,18 +18,46 @@
   z-index: 1000;
   /* Ensure the header stays above other content */
 
+  .header-left {
+      display: flex;
+      align-items: center; // Vertically center items
+      gap: 10px; // Default gap
 
-  .logo {
-    font-size: 24px;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: var(--text);
-    transition: var(--transition-speed) color ease;
+      &.with-sidebar {
+        gap: 5px; // Reduce gap when the sidebar is present
+      }
 
-    &:hover {
-      color: var(--highlight);
+      .sidebar-icon {
+        display: none; // Hidden by default
+        background: none;
+        border: none;
+        font-size: 24px; // Adjust size
+        cursor: pointer;
+        color: var(--header-text);
+        padding: 5px;
+        transition: color var(--transition-speed) ease;
+
+        &:hover {
+          color: var(--highlight);
+        }
+      }
+
+      &.with-sidebar .sidebar-icon {
+        display: block; // Show when the sidebar is present
+      }
+
+      .logo {
+        font-size: 24px;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: var(--text);
+        transition: var(--transition-speed) color ease;
+  
+        &:hover {
+          color: var(--highlight);
+        }
+      }
     }
-  }
 
   .navigation {
     display: flex;

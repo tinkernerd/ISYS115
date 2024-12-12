@@ -1,45 +1,56 @@
 @use 'variables';
+
 .sidebar {
     width: 250px; // Sidebar width
     height: 100vh; // Full viewport height
     position: fixed; // Stay fixed on the left
     top: 0;
-    left: 0;
-    background: var(--background);
-    color: var(--text);
-    overflow-y: auto;
-    padding: 20px;
-    box-shadow: 2px 0 5px var(--box-shadow);
+    left: -300px; // Hidden off-screen by default
+    background: var(--background); // Customizable background color
+    color: var(--text); // Customizable text color
+    overflow-y: auto; // Enable vertical scrolling if needed
+    padding: 20px; // Padding inside the sidebar
+    box-shadow: 2px 0 5px var(--box-shadow); // Add a subtle shadow
     z-index: 10; // Ensure it appears above the main content
-    margin-top: 70px; // Offset by the header's height
+    transition: left 0.3s ease, visibility 0.3s ease, opacity 0.3s ease; // Smooth transitions for opening/closing
+    margin-top: 70px; // Offset for header height
+    visibility: hidden; // Hidden when not active
+    opacity: 0; // Fully transparent when not active
+
+    &.active {
+        // Active state styles
+        left: 0; // Slide into view
+        visibility: visible; // Make it visible
+        opacity: 1; // Fully opaque
+    }
 
     nav {
         ul {
-            list-style: none;
+            list-style: none; // Remove default list styling
             padding: 0;
             margin: 0;
 
             li {
-                margin: 10px 0;
+                margin: 10px 0; // Spacing between list items
 
                 a {
-                    color: var(--text);
-                    text-decoration: none;
-                    font-size: 18px;
-                    transition: color var(--transition-speed) ease, background var(--transition-speed) ease;
-                    padding: 10px;
-                    display: block;
-                    border-radius: 5px;
+                    color: var(--text); // Link color
+                    text-decoration: none; // Remove underline
+                    font-size: 18px; // Font size for links
+                    transition: color var(--transition-speed) ease, background var(--transition-speed) ease; // Smooth hover transitions
+                    padding: 10px; // Add padding around links
+                    display: block; // Ensure the link takes up the full clickable area
+                    border-radius: 5px; // Rounded corners for hover effect
 
                     &:hover {
-                        background: var(--highlight);
-                        color: var(--background);
+                        background: var(--highlight); // Highlight background on hover
+                        color: var(--background); // Invert text color on hover
                     }
 
                     &.active {
-                        background: var(--highlight);
-                        color: var(--background);
-                        pointer-events: none;
+                        background: var(--highlight); // Highlight active link
+                        color: var(--background); // Invert text color for active link
+                        pointer-events: none; // Disable pointer events for active link
                     }
                 }
             }

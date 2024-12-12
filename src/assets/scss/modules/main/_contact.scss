@@ -1,6 +1,5 @@
 .contact {
-    max-width: 500px;
-    // margin: auto;
+    max-width: 720px;
     padding: 20px;
     background: white;
     border: 1px solid #ddd;
@@ -25,6 +24,7 @@
                 border: 1px solid #ccc;
                 border-radius: 5px;
                 font-size: 14px;
+                max-width: 700px;
 
                 &:focus {
                     border-color: #387c3b; // Preferred green
@@ -37,10 +37,32 @@
                 resize: vertical;
             }
         }
+        .checkbox-group {
+            margin-bottom: 15px;
 
+            label {
+                font-weight: normal; // Optional: Adjust the weight for a cleaner look
+                margin: 0; // Remove unnecessary vertical margins
+                display: inline; // Keep the label inline with the checkbox
+                color: #333;
+            }
+
+            input[type='checkbox'] {
+                margin-right: 8px; // Add spacing between the checkbox and the label text
+                vertical-align: middle; // Align checkbox with the label text
+                cursor: pointer;
+            }
+
+            // Ensure each checkbox-label pair starts on a new line
+            input[type='checkbox']+label {
+                display: inline; // Maintain inline layout for checkbox and label
+                margin-right: 15px; // Add spacing between pairs for readability
+            }
+        }
         button {
             display: block;
             width: 100%;
+            max-width: 720px;
             background-color: #387c3b; // Preferred green
             border: none;
             color: white;
@@ -73,6 +95,39 @@
         .success-message {
             color: green;
             font-weight: bold;
+        }
+    }
+}
+
+.summary {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #f9f9f9;
+    max-width: 730px;
+
+    h3 {
+        font-size: 18px;
+        font-weight: bold;
+        /*color: #387c3b; // Preferred green*/
+        color: #000;
+        margin-bottom: 15px;
+    }
+
+    p {
+        font-size: 14px;
+        color: #333;
+        margin-bottom: 10px;
+
+        strong {
+            font-weight: bold;
+            /*color: #387c3b; // Preferred green*/
+            color: #000;
+        }
+
+        span {
+            font-style: italic;
         }
     }
 }

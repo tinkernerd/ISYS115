@@ -3,28 +3,32 @@
 @import url('https://fonts.googleapis.com/css?family=Oswald');
 
 body {
-    //font-family: 'Work Sans', sans-serif;
     font-family: var(--font-family);
     margin: 0;
-    background-color: vars(--secondary-color);
+    padding: 0;
+    background-color: var(--secondary-color);
+    color: var(--text);
+    overflow-x: hidden;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; // Ensure body always fills the viewport
     transition: var(--transition-speed) background ease;
     background: var(--background);
-    color: var(--text);
 }
 
 // Layout
-
 #main {
-    margin-left: 300px; // Offset by the sidebar's width
-    margin-top: 70px;  // Offset by the header's height
+    flex: 1; // Allow main content to take up remaining space
+    margin-top: 70px; // Offset for the fixed header height
     padding: 20px;
-    position: relative; // Ensure it stays on the same plane as the sidebar
-    z-index: 1;        // Ensure it stacks above elements if necessary
-    width: calc(100% - 250px); // Prevent content from expanding under the sidebar
-    box-sizing: border-box; // Include padding in width calculation
-    max-width: fit-content;
+    box-sizing: border-box; // Include padding in width/height calculation
+    width: 100%; // Ensure main section spans the full width
+    overflow-x: hidden; // Prevent horizontal overflow
+    background-color: var(--background); // Match the background to the theme
+    color: var(--text); // Match the text color to the theme
+    transition: color var(--transition-speed) ease, background-color var(--transition-speed) ease;
 }
-
 
 // Responsive Typography
 body,
@@ -33,11 +37,12 @@ input,
 select,
 optgroup,
 textarea {
-    color: vars(--text-color);
+    color: var(--text-color);
     font-size: 1em;
     line-height: 1.5;
     font-weight: 300;
 }
+
 a {
     color: var(--link-color);
     text-decoration: none;
@@ -47,6 +52,7 @@ a {
         color: var(--hover-color);
     }
 }
+
 h1,
 h2,
 h3,
@@ -55,11 +61,13 @@ h5,
 h6 {
     clear: both;
     font-weight: 800;
+    color: var(--text); // Ensure headings follow the theme's text color
 }
 
 p {
     font-size: 1em;
     margin: 0 0 2em 0;
+    color: var(--text); // Ensure paragraph text follows the theme's text color
 
     &.intro {
         font-size: 1.25em;
@@ -116,22 +124,40 @@ p {
     }
 }
 
-
-
-
-
+// Themes
 .light-theme {
     --background: var(--light-background);
     --text: var(--light-text);
     --header-line: var(--light-header-line);
     --box-shadow: var(--light-box-shadow);
-    
-    body {
+    --link-color: var(--light-link-color);
+    --hover-color: var(--light-hover-color);
+    --secondary-color: var(--light-secondary-color);
+
+    body,
+    #main {
         background: var(--background);
         color: var(--text);
     }
 }
 
+.dark-theme {
+    --background: var(--dark-background);
+    --text: var(--dark-text);
+    --header-line: var(--dark-header-line);
+    --box-shadow: var(--dark-box-shadow);
+    --link-color: var(--dark-link-color);
+    --hover-color: var(--dark-hover-color);
+    --secondary-color: var(--dark-secondary-color);
+
+    body,
+    #main {
+        background: var(--background);
+        color: var(--text);
+    }
+}   
+
+// Utility Classes
 h1.centered {
     text-align: center;
 }
