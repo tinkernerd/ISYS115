@@ -1,0 +1,73 @@
+{
+  "name": "isys-115-final",
+  "version": "1.0.0",
+  "description": "The Final Project for ISYS 115",
+  "author": {
+    "name": "Nick Stull",
+    "email": "nicholasp.stull@gmail.com",
+    "url": "https://nicholasstull.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tinkernerd/isys115.git"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "autoprefixer": "^10.4.20",
+    "babel-loader": "^9.2.1",
+    "browser-sync": "^3.0.3",
+    "cpx": "^1.5.0",
+    "cssnano": "^7.0.6",
+    "eslint": "^9.16.0",
+    "eslint-webpack-plugin": "^4.2.0",
+    "html-webpack-plugin": "^5.6.3",
+    "htmlnano": "^2.1.1",
+    "husky": "^9.1.7",
+    "imagemin-cli": "^8.0.0",
+    "npm-run-all": "^4.1.5",
+    "onchange": "^7.1.0",
+    "postcss": "^8.4.49",
+    "postcss-cli": "^11.0.0",
+    "postcss-scss": "^4.0.9",
+    "posthtml": "^0.16.6",
+    "posthtml-cli": "^0.10.0",
+    "posthtml-modules": "^0.9.1",
+    "sass": "1.77.6",
+    "stylelint": "^16.11.0",
+    "stylelint-config-standard-scss": "^14.0.0",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.1.0"
+  },
+  "scripts": {
+    "prepare": "husky install",
+    "go": "npm run build && npm run serve",
+    "watch": "run-p serve watch:*",
+    "build": "run-p build:*",
+    "css:autoprefixer": "postcss -u autoprefixer -r dist/assets/css/*.css",
+    "css:scss": "sass --style=compressed src/assets/scss/styles.scss dist/assets/css/styles.css",
+    "css:lint": "stylelint src/assets/scss/*.scss  --custom-syntax postcss-scss",
+    "build:css": "npm run css:lint && npm run css:scss && npm run css:autoprefixer",
+    "watch:css": "onchange \"src/assets/scss\" -- npm run build:css",
+    "serve": "browser-sync start --server \"dist\" --files \"dist\"",
+    "build:images": "imagemin src/assets/img/**/* --out-dir=dist/img",
+    "watch:images": "onchange \"src/assets/images\" -- npm run build:images",
+    "build:js": "webpack --mode=production",
+    "watch:js": "onchange \"src/assets/js\" -- webpack --mode=development",
+    "build:html-pages": "posthtml -c posthtml/posthtml.json",
+    "build:html-projects": "posthtml -c posthtml/posthtml.project.json",
+    "build:html-notes": "posthtml -c posthtml/posthtml.notes.json",
+    "build:html": "npm run build:html-projects && npm run build:html-pages && npm run build:html-notes",
+    "watch:html": "onchange \"src/views\" -- npm run build:html",
+    "lint": "eslint --fix --ext .js,.jsx ."
+  },
+  "packageManager": "pnpm@9.14.4+sha512.c8180b3fbe4e4bca02c94234717896b5529740a6cbadf19fa78254270403ea2f27d4e1d46a08a0f56c89b63dc8ebfd3ee53326da720273794e6200fcf0d184ab",
+  "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^5.3.3",
+    "dotenv": "^16.4.7",
+    "jquery": "^3.7.1"
+  }
+}

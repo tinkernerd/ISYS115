@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>ISYS115 | Contact US</title>
+    <module href="/components/head.html"></module>
+</head>
+
+<body>
+    <module href="/components/header.html"></module>
+    <div id="main">
+        <h1>Contact The Tinkering Nerd</h1>
+        <h2>Let’s Connect</h2>
+        <p>Have a question, feedback, or just want to say hi? Fill out the form below to get in touch with me. I will do my best to get back asap.</p>
+        <p class="motto">
+            <em>“Stay curious, stay tinkering.”</em>
+        </p>
+        <div class="contact">
+            <form onsubmit="sendContact(event)">
+                <div class="mb-3">
+                    <label for="emailInput" class="form-label">Enter your email address</label>
+                    <input type="email" class="form-control" id="emailInput">
+                </div>
+                <div class="mb-3">
+                    <label for="messageInput" class="form-label">Enter your message</label>
+                    <textarea class="form-control" id="messageInput" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <div id="errorMessages" class="error-messages"></div>
+        </div>
+
+
+    </div>
+    <script>
+    async function sendContact(ev) {
+        ev.preventDefault();
+
+        const emailInput = document.getElementById('emailInput');
+        const messageInput = document.getElementById('messageInput');
+        const senderEmail = emailInput.value.trim();
+        const senderMessage = messageInput.value.trim();
+
+        const errorContainer = document.getElementById('errorMessages');
+        errorContainer.innerHTML = ''; // Clear previous errors
+
+        try {
+            // Validate inputs
+            if (!senderEmail) throw new Error('Email address is required.');
+            if (!validateEmail(senderEmail)) throw new Error('Invalid email format.');
+            if (!senderMessage) throw new Error('Message cannot be empty.');
+
+            // Prepare webhook payload
+            const webhookBody = {
+                embeds: [{
+                    title: 'Contact Form Submitted',
+                    fields: [
+                        { name: 'Sender', value: senderEmail },
+                        { name: 'Message', value: senderMessage },
+                    ],
+                }],
+            };
+
+            const webhookUrl = 'https://discord.com/api/webhooks/1316452106130952294/ZeVGXnqPNY3uLztrkZs181nDyXsXCow-yGUGMJukjCf1UCkYEUFrloLPnAW098lTB5lq';
+
+            // Send data to Discord webhook
+            const response = await fetch(webhookUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(webhookBody),
+            });
+
+            if (!response.ok) {
+                throw new Error('Error sending the message to Discord.');
+            }
+
+            // Clear form and show success message
+            emailInput.value = '';
+            messageInput.value = '';
+            errorContainer.innerHTML = '<p class="success-message">I have received your message!</p>';
+        } catch (error) {
+            // Display error message
+            const errorMessage = document.createElement('p');
+            errorMessage.classList.add('error-message');
+            errorMessage.textContent = error.message;
+            errorContainer.appendChild(errorMessage);
+        }
+    }
+
+    // Helper function to validate email
+    function validateEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+</script>
+</body>
+
+</html>

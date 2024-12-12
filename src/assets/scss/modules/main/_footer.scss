@@ -1,0 +1,20 @@
+// Footer
+#footer {
+    padding: 0.5rem 1rem;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: calc(100% - 2rem);
+    background: #222;
+    color: rgba(255, 255, 255, 0.8);
+    display: none;
+
+    a {
+        color: #387c3b;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

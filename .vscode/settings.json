@@ -1,0 +1,9 @@
+{
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "tsconfig.json": "tsconfig.*.json, env.d.ts",
+    "vite.config.*": "jsconfig*, vitest.config.*, cypress.config.*, playwright.config.*",
+    "package.json": "package-lock.json, pnpm*, .yarnrc*, yarn*, .eslint*, eslint*, .prettier*, prettier*, .editorconfig, posthtml.json, postcss.config.*, tailwind.config.*, webpack.config.*, .stylelintrc*, stylelint*, .babelrc*, babel.config.*, .browserslistrc, .nvmrc, .env*, .env.*",
+    ".gitignore": ".gitignore, .dockerignore, .npmignore, .eslintignore, .prettierignore, .stylelintignore, .browserslistrc, .nvmrc",
+  }
+}

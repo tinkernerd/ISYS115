@@ -1,0 +1,34 @@
+$dark-green: #387c3b;
+$light-green: #39AC4C;
+$black: #000;
+$white: #FFF;
+$grey: #333;
+
+$primary-color: #fff;
+$secondary-color: #eee;
+$text-color: #000;
+$hover-color: #777;
+
+:root {
+    /* Colors */
+    --background: #{$grey};
+    --text: #{$white};
+    --highlight: #{$light-green};
+    --header-line: #{$white};
+    --box-shadow: #{$light-green};
+
+    /* Light Theme Colors */
+    --light-background: #{$white};
+    --light-text: #{$black};
+    --light-header-line: #{$black};
+    --light-box-shadow: rgba(0, 0, 0, 0.2);
+    --link-color: #{$dark-green};
+    /* Typography */
+    --font-family: 'Oswald', sans-serif;
+    --secondary-color: #{$secondary-color};
+    /* Transitions */
+    --transition-speed: 0.5s;
+    --primary-color: #{$primary-color}; 
+    --text-color: #{$text-color};
+}
+

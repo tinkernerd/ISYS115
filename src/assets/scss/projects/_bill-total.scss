@@ -1,0 +1,57 @@
+.order-example {
+    max-width: 600px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    // Title Styling
+    h1 {
+        font-size: 2em;
+        font-weight: 600;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    // Form Layout
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    // Menu Item Styling
+    .menu-item {
+        display: flex;
+        align-items: center;
+
+        input[type="checkbox"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+            accent-color: #2a7ae2;
+        }
+
+        label {
+            font-size: 1em;
+            font-weight: 400;
+            cursor: pointer;
+
+            &:hover {
+                color: #2a7ae2;
+            }
+        }
+
+        input[type="checkbox"]:checked+label {
+            color: #2a7ae2;
+        }
+    }
+
+    // Aside Styling
+    aside {
+        margin-top: 20px;
+        font-size: 1.2em;
+        color: #08A;
+        text-align: center;
+    }
+}

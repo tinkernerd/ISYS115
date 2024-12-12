@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Static Website Template</title>
+    <module href="/components/head.html" </module>
+</head>
+
+<body>
+    <module href="/components/header.html"></module>
+    <module href="/components/sidebar.html"></module>
+    <div id="main">
+                    <h1 class="centered">METAR Data for Multiple Airports</h1>
+            <div class="callout info">
+                <p>
+                    <strong>Info:</strong> The table below shows the latest METAR data for selected airports.
+                    This data is refreshed every hour.
+                </p>
+                <p>The project currently doesn't work until I understand .env files. Apparently you shouldn't give out api keys. (sarcasm)</p>
+            </div>
+        <table class="live-metar">
+            <thead>
+                <tr>
+                    <th class="top-text">Airport</th>
+                    <th class="top-text">METAR</th>
+                </tr>
+            </thead>
+            <tbody id="metar-table-body">
+                <!-- Rows will be dynamically added here -->
+            </tbody>
+        </table>
+</div> 
+<script>
+    const airports = ['KBEH', 'KMDW', 'KSBN', 'KORD']; // List of airports
+        const metars = {}; // Store METAR data for each airport
+        const apiKey = "Replace with your actual API key"; 
+        const tableBody = document.getElementById('metar-table-body');
+
+        // Function to fetch METAR data for a specific airport
+        async function fetchMetar(airport) {
+            try {
+                const response = await fetch(
+                    `https://avwx.rest/api/metar/${airport}?token=${apiKey}`
+                );
+                if (response.ok) {
+                    const data = await response.json();
+                    return data.sanitized;
+                }
+                return 'Unable to fetch METAR';
+            } catch (error) {
+                console.error(`Error fetching METAR for ${airport}:`, error);
+                return 'Error fetching METAR';
+            }
+        }
+
+        // Function to update METAR data for all airports
+        async function updateMetars() {
+            for (const airport of airports) {
+                const metar = await fetchMetar(airport);
+                metars[airport] = metar;
+                renderTable();
+            }
+        }
+
+        // Function to render the table rows dynamically
+        function renderTable() {
+            tableBody.innerHTML = ''; // Clear the table body
+            for (const airport of airports) {
+                const row = document.createElement('tr');
+                const airportCell = document.createElement('td');
+                const metarCell = document.createElement('td');
+
+                airportCell.textContent = airport;
+                metarCell.textContent = metars[airport] || 'Loading...';
+
+                row.appendChild(airportCell);
+                row.appendChild(metarCell);
+                tableBody.appendChild(row);
+            }
+        }
+
+        // Fetch initial METAR data and update periodically
+        updateMetars();
+        setInterval(updateMetars, 3600000); // Refresh METAR data every hour
+</script>
+</body>
+
+</html>

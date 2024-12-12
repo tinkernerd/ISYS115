@@ -1,0 +1,21 @@
+{
+    "extends": "stylelint-config-standard-scss",
+    "rules": {
+        "block-no-empty": true,
+        "color-hex-length": "short",
+        "color-no-invalid-hex": true,
+        "rule-empty-line-before": [
+            "always",
+            {
+                "except": [
+                    "first-nested",
+                    "after-single-line-comment"
+                ],
+                "ignore": [
+                    "after-comment"
+                ]
+            }
+        ]
+    }
+}
+

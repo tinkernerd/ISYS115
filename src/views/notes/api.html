@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>APIs in JavaScript</title>
+  <module href="/components/head.html"></module>
+</head>
+<body>
+  <module href="/components/header.html"></module>
+  <module href="/components/notes-sidebar.html"></module>
+  <div id="main">
+      <header>
+        <h1>APIs in JavaScript</h1>
+      </header>
+      <p>JavaScript can interact with APIs (Application Programming Interfaces) to fetch data from external
+        services.</p>
+      <section>
+        <button class="collapsible open">Fetching Data</button>
+      <div class="content expanded">
+        <pre>
+<code class="language-javascript">fetch('https://api.example.com/data')
+  .then(response => response.json())
+  .then(data => console.log(data));</code></pre>
+</div></section>
+<br>
+<section>
+    <button class="collapsible open">Using <code class="language-javascript">async/await</code></button>
+    <div class="content expanded"><pre>
+<code class="language-javascript">async function getData() {
+  const response = await fetch('https://api.example.com/data');
+  const data = await response.json();
+  console.log(data);
+}</code></pre>
+</div>
+      </section>
+    </div>
+</body>
+</html>

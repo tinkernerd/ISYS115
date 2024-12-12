@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>JavaScript Fundamentals</title>
+  <module href="/components/head.html"></module>
+</head>
+
+<body>
+  <module href="/components/header.html"></module>
+  <module href="/components/notes-sidebar.html"></module>
+  <div id="main">
+  <header>
+    <h1>JavaScript Fundamentals</h1>
+  </header>
+  <main>
+    <section>
+      <h2>Overview of JavaScript</h2>
+      <ul>
+        <li><strong>JavaScript</strong>: Adds interactivity to websites, allowing for dynamic user experiences.</li>
+        <li>Initially created for data validation in online commerce.</li>
+        <li><strong>Scripting Language</strong>: Runs directly in the browser, avoiding the need for compilation.</li>
+      </ul>
+    </section>
+  
+    <section>
+      <h2>ECMAScript</h2>
+      <ul>
+        <li><strong>ECMAScript</strong>: The standardized version of JavaScript, developed by ECMA.</li>
+        <li>JavaScript includes ECMAScript, as well as the Document Object Model (DOM) and Browser Object Model (BOM).
+        </li>
+      </ul>
+    </section>
+  
+    <section>
+      <h2>Client/Server Architecture</h2>
+      <ul>
+        <li><strong>Client (Front End)</strong>: The device or browser interacting with the user and server.</li>
+        <li><strong>Server (Back End)</strong>: Manages data storage and processing.</li>
+        <li><strong>Client-Side Scripting (JavaScript)</strong>: Enhances user interactions by running scripts directly
+          in the browser.</li>
+      </ul>
+    </section>
+  
+    <section>
+      <h2>Embedding JavaScript in HTML</h2>
+      <p>
+        Use the <code class="language-javascript">&lt;script&gt;</code> tag to add JavaScript code within HTML:
+      </p>
+      <pre><code class="language-javascript">&lt;script&gt;
+  document.write("&lt;p&gt;Example&lt;/p&gt;");
+&lt;/script&gt;</code></pre>
+      <p>
+        JavaScript includes built-in objects like <code class="language-javascript">Document</code>, containing properties and methods for working
+        with web content.
+      </p>
+    </section>
+  
+    <section>
+      <h2>Variables and Expressions</h2>
+      <p><strong>Variables</strong>: Store data and are declared using <code class="language-javascript">let</code>, <code class="language-javascript">var</code>, or
+        <code class="language-javascript">const</code>.
+      </p>
+      <pre><code class="language-javascript">let salesTotal = 47.58;
+const taxRate = 0.08;</code></pre>
+      <p><strong>Expressions</strong>: Combine variables and literals to produce a result.</p>
+      <pre><code class="language-javascript">let totalCost = salesTotal + 10;
+document.write("&lt;p&gt;Total cost is $" + totalCost + "&lt;/p&gt;");</code></pre>
+    </section>
+  
+    <section>
+      <h2>Event Handling</h2>
+      <p><strong>Event Handlers</strong>: Respond to user actions, like clicks:</p>
+      <pre><code class="language-javascript">&lt;input type="button" onclick="window.alert('Hello!')" /&gt;</code></pre>
+      <p><strong>Accessing Elements by ID</strong>:</p>
+      <pre><code class="language-javascript">let fName = document.getElementById("firstName");</code></pre>
+    </section>
+  
+    <section>
+      <h2>Functions</h2>
+      <p><strong>Definition</strong>: Functions are sets of statements that perform tasks or calculate values.</p>
+      <pre><code class="language-javascript">function functionName(parameters) {
+// statements
+}</code></pre>
+    </section>
+  
+    <section>
+      <h2>Scope of Variables</h2>
+      <p><strong>Scope</strong>: Defines where a variable or function is accessible.</p>
+      <ul>
+        <li><strong>Block Scope</strong> <code class="language-javascript">(let)</code></li>
+        <li><strong>Function Scope</strong> <code class="language-javascript">(var)</code></li>
+        <li><strong>Global Scope</strong> (available throughout the entire program)</li>
+      </ul>
+    </section>
+  
+    <section>
+      <h2>Data Types</h2>
+      <ul>
+        <li><strong>Primitive Types</strong>:</li>
+        <ul>
+          <li><strong>Number</strong>: Numeric values.</li>
+          <li><strong>Boolean</strong>: <code class="language-javascript">true</code> or <code class="language-javascript">false</code>.</li>
+          <li><strong>String</strong>: Text values.</li>
+          <li><strong>Null</strong>: Represents an empty or nonexistent value.</li>
+          <li><strong>Undefined</strong>: An unassigned or undeclared variable.</li>
+        </ul>
+      </ul>
+    </section>
+  
+    <section>
+      <h2>Operators</h2>
+      <ul>
+        <li><strong>Arithmetic Operators</strong>: <code class="language-javascript">+</code>, <code class="language-javascript">-</code>, <code class="language-javascript">*</code>, <code class="language-javascript">/</code>,
+          <code class="language-javascript">%</code>, <code class="language-javascript">**</code>
+        </li>
+        <li><strong>Assignment Operators</strong>: <code class="language-javascript">=</code>, <code class="language-javascript">+=</code>, <code class="language-javascript">-=</code>, etc.</li>
+        <li><strong>Comparison Operators</strong>: <code class="language-javascript">==</code>, <code class="language-javascript">!=</code>, <code class="language-javascript">&gt;</code>,
+          <code class="language-javascript">&lt;</code>, etc.
+        </li>
+        <li><strong>Logical Operators</strong>: <code class="language-javascript">&&</code>, <code class="language-javascript">||</code>, <code class="language-javascript">!</code></li>
+      </ul>
+    </section>
+  
+    <section>
+      <h2>Arrays</h2>
+      <p><strong>Arrays</strong>: Store sets of data under a single variable name.</p>
+      <pre><code class="language-javascript">let items = ["apple", "banana", "cherry"];</code></pre>
+      <p><strong>Elements and Indexes</strong>:</p>
+      <ul>
+        <li><strong>Element</strong>: A value stored in an array.</li>
+        <li><strong>Index</strong>: The position of an element within an array (starting from 0).</li>
+      </ul>
+    </section>
+  
+    <section>
+      <h2>Program Loops</h2>
+      <ul>
+        <li><strong>While Loop</strong>: Repeats as long as a condition is true.</li>
+        <pre><code class="language-javascript">while (condition) {
+// statements
+}</code></pre>
+        <li><strong>Do-While Loop</strong>: Executes at least once, then checks the condition.</li>
+        <pre><code class="language-javascript">do {
+// statements
+} while (condition);</code></pre>
+        <li><strong>For Loop</strong>: Repeats a specific number of times.</li>
+        <pre><code class="language-javascript">for (initial; condition; increment) {
+// statements
+}</code></pre>
+      </ul>
+    </section>
+  
+    <section>
+      <h2>Conditional Statements</h2>
+      <ul>
+        <li><strong>If Statement</strong>: Runs a set of statements only if a condition is true.</li>
+        <pre><code class="language-javascript">if (condition) {
+// statements
+}</code></pre>
+        <li><strong>Switch Statement</strong>: A conditional with multiple cases.</li>
+        <pre><code class="language-javascript">switch (expression) {
+      case label1:
+          // statements
+          break;
+      default:
+          // statements
+  }</code></pre>
+      </ul>
+    </section>
+  
+    <section>
+      <h2>Managing Loops with `break` and `continue`</h2>
+      <ul>
+        <li><strong>break</strong>: Exits a loop early.</li>
+        <li><strong>continue</strong>: Skips the current iteration, continuing the loop.</li>
+      </ul>
+    </section>
+  
+    <section>
+      <h2>Web Form Controls</h2>
+      <p>
+        Access input values and listen to form events using <code class="language-javascript">getElementById()</code> and event listeners.
+      </p>
+    </section>
+  
+    <section>
+      <h2>Debugging</h2>
+      <p>Use the browser’s console to inspect and debug JavaScript code.</p>
+    </section>
+  
+    <section>
+      <h2>Fetching Data with APIs</h2>
+      <p>
+        JavaScript can interact with external APIs to fetch data, typically using <code class="language-javascript">fetch()</code>:
+      </p>
+      <pre><code class="language-javascript">fetch('https://api.example.com/data')
+  .then(response => response.json())
+  .then(data => console.log(data));</code></pre>
+      <p><strong>Using `async/await`</strong>:</p>
+      <pre><code class="language-javascript">async function getData() {
+  const response = await fetch('https://api.example.com/data');
+  const data = await response.json();
+  console.log(data);
+}</code></pre>
+    </section>
+  
+    <section>
+      <h2>Selecting and Modifying DOM Elements</h2>
+      <p><strong>Selecting Elements</strong>:</p>
+      <pre><code class="language-javascript">const element = document.getElementById('myElement');</code></pre>
+      <p><strong>Changing Content</strong>:</p>
+      <pre><code class="language-javascript">element.textContent = 'New Content';</code></pre>
+      <p><strong>Modifying Styles</strong>:</p>
+      <pre><code class="language-javascript">element.style.color = 'blue';</code></pre>
+    </section>
+    </div>
+</body>
+
+</html>
