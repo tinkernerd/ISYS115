@@ -1,6 +1,6 @@
 export function setupFooter() {
     const footer = document.getElementById('footer');
-    const apiKey = "Replace API KEY HERE"   // Replace with your Tomorrow.io API key
+    const apiKey = "Replace API KEY HERE";  // Replace with your Tomorrow.io API key
 
     // Function to update date and time
     function updateDateTime() {
