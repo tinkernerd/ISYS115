@@ -4,7 +4,7 @@
 Either download and run or view the link at isys115.nicholasstull.com - currently api functions are not working until I learn about secrets. 
 What can I say ¯\\_(ツ)_//¯
 
-
+[View live Site via Vercel](https://isys-115.vercel.app/)
 ## Local Dev
 
 1. ```git clone https://github.com/tinkernerd/isys115.git```
