@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>DOM Manipulation</title>
+    <module href="/components/head.html"></module>
+</head>
+
+<body>
+    <module href="/components/header.html"></module>
+    <module href="/components/notes-sidebar.html"></module>
+    <div id="main">
+            <header>
+                <h1>DOM Manipulation</h1>
+            </header>
+            <p>The <strong>DOM</strong>(Document Object Model) is how you can interact with and manipulate web pages using JavaScript.</p>
+            <section>
+                <button class="collapsible open">Selecting Elements</button>
+                <div class="content expanded">
+                    <code class="language-javascript">const element = document.getElementById('myElement');</code><br>or<br>
+                    <code class="language-javascript">const element = document.querySelector('.myClass');</code>
+                </div>
+            </section>
+            <br>
+            <section>
+                <button class="collapsible open">Changing Content</button>
+                <div class="content expanded"><code class="language-javascript">element.textContent = 'New Content';</code>
+                </div>
+            </section>
+            <br>
+            <section>
+                <button class="collapsible open">Modifying Styles</button>
+                <div class="content expanded"><code class="language-javascript">element.style.color = 'blue';</code>
+                </div>
+            </section>
+        </div>
+</body>
+
+</html>

@@ -6,13 +6,14 @@
     "name": "Nick Stull",
     "email": "nicholasp.stull@gmail.com",
     "url": "https://nicholasstull.com"
-    },
+  },
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/tinkernerd/isys115.git"
   },
   "devDependencies": {
+    "@babel/core": "^7.26.0",
     "@babel/preset-env": "^7.26.0",
     "autoprefixer": "^10.4.20",
     "babel-loader": "^9.2.1",
@@ -23,6 +24,7 @@
     "eslint-webpack-plugin": "^4.2.0",
     "html-webpack-plugin": "^5.6.3",
     "htmlnano": "^2.1.1",
+    "husky": "^9.1.7",
     "imagemin-cli": "^8.0.0",
     "npm-run-all": "^4.1.5",
     "onchange": "^7.1.0",
@@ -40,6 +42,7 @@
     "webpack-dev-server": "^5.1.0"
   },
   "scripts": {
+    "prepare": "husky install",
     "go": "npm run build && npm run serve",
     "watch": "run-p serve watch:*",
     "build": "run-p build:*",
@@ -53,13 +56,18 @@
     "watch:images": "onchange \"src/assets/images\" -- npm run build:images",
     "build:js": "webpack --mode=production",
     "watch:js": "onchange \"src/assets/js\" -- webpack --mode=development",
-    "build:html": "posthtml -c posthtml.json",
+    "build:html-pages": "posthtml -c posthtml/posthtml.json",
+    "build:html-projects": "posthtml -c posthtml/posthtml.project.json",
+    "build:html-notes": "posthtml -c posthtml/posthtml.notes.json",
+    "build:html": "npm run build:html-projects && npm run build:html-pages && npm run build:html-notes",
     "watch:html": "onchange \"src/views\" -- npm run build:html",
     "lint": "eslint --fix --ext .js,.jsx ."
   },
   "packageManager": "pnpm@9.14.4+sha512.c8180b3fbe4e4bca02c94234717896b5529740a6cbadf19fa78254270403ea2f27d4e1d46a08a0f56c89b63dc8ebfd3ee53326da720273794e6200fcf0d184ab",
   "dependencies": {
     "@popperjs/core": "^2.11.8",
-    "bootstrap": "^5.3.3"
+    "bootstrap": "^5.3.3",
+    "dotenv": "^16.4.7",
+    "jquery": "^3.7.1"
   }
 }

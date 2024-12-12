@@ -1,0 +1,11 @@
+{
+    "input": "src/views/notes/*.html",
+    "output": "dist/notes",
+    "plugins": {
+        "posthtml-modules": {
+            "root": "./src/views",
+            "initial": true
+        },
+        "htmlnano": {}
+    }
+}

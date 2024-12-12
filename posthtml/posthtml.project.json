@@ -1,0 +1,11 @@
+{
+    "input": "src/views/projects/*.html",
+    "output": "dist/projects",
+    "plugins": {
+        "posthtml-modules": {
+            "root": "./src/views",
+            "initial": true
+        },
+        "htmlnano": {}
+    }
+}

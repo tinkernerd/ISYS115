@@ -1,0 +1,29 @@
+.book-review{
+    max-width: 400px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+
+    textarea {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+        border: 2px solid #ddd;
+        border-radius: 20px;
+        resize: none;
+    }
+
+    #countLabel {
+        margin-top: 10px;
+        font-size: 14px;
+    }
+
+    #warningBox {
+        margin-top: 10px;
+        color: red;
+        font-weight: bold;
+    }
+}

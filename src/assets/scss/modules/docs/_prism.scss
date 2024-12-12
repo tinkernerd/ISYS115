@@ -1,0 +1,183 @@
+/* PrismJS Core Styles */
+code[class*="language-"],
+pre[class*="language-"] {
+    color: #000;
+    background: transparent;
+    text-shadow: 0 1px #fff;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    font-size: 1em;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+
+    &::-moz-selection,
+    &::selection {
+        text-shadow: none;
+        background: #b3d4fc;
+    }
+}
+
+@media print {
+
+    code[class*="language-"],
+    pre[class*="language-"] {
+        text-shadow: none;
+    }
+}
+
+pre[class*="language-"] {
+    padding: 1em;
+    margin: 0.5em 0;
+    overflow: auto;
+    max-width: 80%;
+    /* Adjust width of the box */
+    background: #f5f2f0;
+    position: relative;
+    /* Enable positioning for copy button */
+    border-radius: 5px;
+    /* Optional rounded corners */
+}
+
+/* Inline code styling */
+:not(pre)>code[class*="language-"] {
+    background: #f5f2f0;
+    padding: 0.1em;
+    border-radius: 0.3em;
+    white-space: normal;
+}
+
+/* Token Colors */
+.token.cdata,
+.token.comment,
+.token.doctype,
+.token.prolog {
+    color: #708090;
+}
+
+.token.punctuation {
+    color: #999;
+}
+
+.token.namespace {
+    opacity: 0.7;
+}
+
+.token.boolean,
+.token.constant,
+.token.deleted,
+.token.number,
+.token.property,
+.token.symbol,
+.token.tag {
+    color: #905;
+}
+
+.token.attr-name,
+.token.builtin,
+.token.char,
+.token.inserted,
+.token.selector,
+.token.string {
+    color: #690;
+}
+
+.language-css .token.string,
+.style .token.string,
+.token.entity,
+.token.operator,
+.token.url {
+    color: #9a6e3a;
+    background: hsla(0, 0%, 100%, 0.5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+    color: #07a;
+}
+
+.token.class-name,
+.token.function {
+    color: #dd4a68;
+}
+
+.token.important,
+.token.regex,
+.token.variable {
+    color: #e90;
+}
+
+.token.bold,
+.token.important {
+    font-weight: 700;
+}
+
+.token.italic {
+    font-style: italic;
+}
+
+.token.entity {
+    cursor: help;
+}
+
+/* PrismJS Core Styles remain unchanged */
+
+/* Ensure proper stacking and positioning */
+pre {
+    position: relative;
+    /* Enable copy button to be positioned absolutely */
+}
+
+/* Copy Button Styles */
+.copy-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #387c3b;
+    /* Match your site's theme */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    cursor: pointer;
+    z-index: 10;
+    /* Ensure it sits above the code block */
+    opacity: 0.8;
+    transition: opacity 0.3s, transform 0.2s ease, background-color 0.3s;
+}
+
+.copy-button:hover {
+    opacity: 1;
+}
+
+.copy-button:active {
+    transform: scale(0.95);
+}
+
+.copy-button.copied {
+    background-color: #5a9db3;
+    /* Optional: Change background color when copied */
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}

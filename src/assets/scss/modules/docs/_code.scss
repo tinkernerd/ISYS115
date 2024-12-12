@@ -1,0 +1,48 @@
+pre {
+    position: relative;
+}
+
+.copy-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #387c3b;
+    /* Match your site's theme */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    cursor: pointer;
+    z-index: 10;
+    opacity: 0.8;
+    transition: opacity 0.3s, transform 0.2s ease;
+}
+
+.copy-button:hover {
+    opacity: 1;
+}
+
+.copy-button:active {
+    transform: scale(0.95);
+}
+
+.copy-button.copied::after {
+    content: 'Copied!';
+    color: white;
+    font-size: 12px;
+    position: absolute;
+    top: -20px;
+    right: 0;
+    animation: fadeOut 2s forwards;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}

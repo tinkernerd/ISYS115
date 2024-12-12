@@ -1,0 +1,136 @@
+@use 'variables';
+
+.header {
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 30px;
+  background: var(--background);
+  color: var(--text);
+  box-shadow: 0 0 10px var(--box-shadow);
+  width: 100%;
+  /* Ensure the header spans the full width */
+  position: fixed;
+  /* Keep the header at the top */
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  /* Ensure the header stays above other content */
+
+
+  .logo {
+    font-size: 24px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--text);
+    transition: var(--transition-speed) color ease;
+
+    &:hover {
+      color: var(--highlight);
+    }
+  }
+
+  .navigation {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    max-width: 400px;
+    padding: 0;
+
+    ul {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+
+      a {
+        margin: 10px 30px;
+        position: relative;
+        color: var(--text);
+        font-family: var(--font-family);
+        font-size: 20px;
+        text-transform: uppercase;
+        text-decoration: none;
+
+        &:before {
+          position: absolute;
+          bottom: -2px;
+          content: '';
+          width: 100%;
+          height: 3px;
+          background: var(--highlight);
+          transform: translateX(-100%);
+          opacity: 0;
+        }
+
+        &:hover {
+          &:before {
+            opacity: 1;
+            transition: var(--transition-speed) transform ease, 0.8s opacity ease;
+            transform: translateX(0);
+          }
+        }
+      }
+
+      .active {
+        color: var(--highlight);
+        pointer-events: none;
+
+        &:before {
+          display: none;
+        }
+
+        &:hover {
+          &:before {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+  .theme-switch {
+    width: 70px;
+    height: 30px;
+    background: var(--highlight);
+    /* Background of the toggle bar */
+    border-radius: 50px;
+    position: relative;
+    cursor: pointer;
+    transition: background var(--transition-speed) ease;
+    margin-right: 50px;
+    /* Smooth transition for bar color */
+
+    .switch {
+      width: 24px;
+      height: 24px;
+      background: white;
+      /* Default switch color */
+      border-radius: 100%;
+      position: absolute;
+      top: 3px;
+      left: 4px;
+      transition: transform var(--transition-speed) ease, background var(--transition-speed) ease;
+
+      &:hover {
+        background: var(--highlight);
+        /* Optional hover effect */
+      }
+    }
+
+    // Scoped styles for light theme
+    .light-theme & {
+      background: var(--text);
+      /* Change bar background color for light theme */
+
+      .switch {
+        background: var(--background);
+        /* Change switch color for light theme */
+        transform: translateX(37px);
+        /* Move to the right */
+      }
+    }
+  }
+}

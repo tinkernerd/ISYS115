@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Web Security</title>
+    <module href="/components/head.html"></module>
+    <style>
+        #map {
+            height: 400px;
+            /* Adjust height as needed */
+            width: 100%;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <module href="/components/header.html"></module>
+    <module href="/components/notes-sidebar.html"></module>
+    <div id="main">
+        <section class="cybersecurity-landing">
+            <h1>Understanding Web Security</h1>
+            <p>Welcome to my cybersecurity page! As a web developer, I believe it's essential to understand the basics
+                of web security and take proactive measures to protect yourself and your data online.</p>
+            <p>Whether you're browsing the web, managing sensitive information, or building websites, security should
+                be a top priority. On this page, you'll find practical advice and resources covering:</p>
+            <ul>
+                <li>Recognizing and avoiding phishing scams</li>
+                <li>Creating and managing strong, unique passwords</li>
+                <li>Implementing two-factor authentication (2FA)</li>
+                <li>Understanding encryption and its importance</li>
+            </ul>
+            <p>If you have questions or would like to learn more, feel free to <a href="/contact.html">reach out to
+                    me</a>!</p>
+        </section>
+
+        <section class="security-info">
+            <h2>What Websites Can Know About You</h2>
+            <p>Did you know that websites can access certain details about your device and browser? Here's what your
+                browser is currently sharing:</p>
+            <ul id="browserInfo">
+                <!-- Populated by JavaScript -->
+            </ul>
+        </section>
+
+        <section class="geo-info">
+            <h2>Your Geolocation</h2>
+            <p>If you allow access, this website can retrieve your approximate location:</p>
+            <ul id="geoInfo">
+                <!-- Populated by JavaScript -->
+            </ul>
+            <div id="map"></div>
+        </section>
+
+        <section class="best-practices">
+            <h2>Web Security Best Practices</h2>
+            <p>Securing your online experience doesn't have to be complicated. Here are some fundamental practices to
+                follow:</p>
+            <ul>
+                <li>Always verify the authenticity of websites before entering sensitive information.</li>
+                <li>Enable two-factor authentication (2FA) wherever possible for an extra layer of security.</li>
+                <li>Use a password manager to create and store unique, strong passwords for each account.</li>
+                <li>Keep your software, browser, and operating system updated to avoid vulnerabilities.</li>
+            </ul>
+        </section>
+
+        <section class="resources">
+            <h2>Trusted Resources for Staying Secure</h2>
+            <p>Expand your knowledge with these trusted resources:</p>
+            <ul>
+                <li><a href="https://www.cisa.gov/tips/stay-safe-online" target="_blank">Stay Safe Online - CISA</a>:
+                    Comprehensive security tips from the Cybersecurity and Infrastructure Security Agency.</li>
+                <li><a href="https://www.consumer.ftc.gov/topics/online-security" target="_blank">FTC Online
+                        Security</a>:
+                    Practical advice from the Federal Trade Commission.</li>
+                <li><a href="https://us.norton.com/internetsecurity-how-to.html" target="_blank">Norton Web Security
+                        Tips</a>:
+                    Expert articles on safeguarding your digital life.</li>
+                <li><a href="https://haveibeenpwned.com/" target="_blank">Have I Been Pwned?</a>: Check if your email
+                    or password has been involved in a data breach.</li>
+            </ul>
+        </section>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const browserInfo = document.getElementById('browserInfo');
+            const geoInfo = document.getElementById('geoInfo');
+            const mapContainer = document.getElementById('map');
+
+            const properties = {
+                'App Name': navigator.appName,
+                'App Version': navigator.appVersion,
+                'Platform': navigator.platform,
+                'Language': navigator.language,
+                'Online Status': navigator.onLine ? "Online" : "Offline",
+                'User Agent': navigator.userAgent,
+                'Cookies Enabled': navigator.cookieEnabled,
+                'Screen Width': screen.width,
+                'Screen Height': screen.height,
+                'Available Width': screen.availWidth,
+                'Available Height': screen.availHeight,
+                'Color Depth': screen.colorDepth,
+                'Pixel Depth': screen.pixelDepth,
+            };
+
+            for (const [key, value] of Object.entries(properties)) {
+                const li = document.createElement('li');
+                li.textContent = `${key}: ${value}`;
+                browserInfo.appendChild(li);
+            }
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition((position) => {
+                    const { latitude, longitude } = position.coords;
+
+                    const li = document.createElement('li');
+                    li.textContent = `Latitude: ${latitude}, Longitude: ${longitude}`;
+                    geoInfo.appendChild(li);
+
+                    const map = L.map('map').setView([latitude, longitude], 13);
+
+                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        maxZoom: 19,
+                        attribution: '© OpenStreetMap contributors'
+                    }).addTo(map);
+
+                    L.marker([latitude, longitude]).addTo(map)
+                        .bindPopup('You are here!')
+                        .openPopup();
+                }, () => {
+                    const li = document.createElement('li');
+                    li.textContent = "Geolocation access denied.";
+                    geoInfo.appendChild(li);
+                    mapContainer.style.display = 'none'; // Hide map if geolocation is denied
+                });
+            } else {
+                const li = document.createElement('li');
+                li.textContent = "Geolocation is not supported by this browser.";
+                geoInfo.appendChild(li);
+                mapContainer.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+
+</html>

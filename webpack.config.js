@@ -1,14 +1,15 @@
 const ESLintPlugin = require('eslint-webpack-plugin');
 
+
 module.exports = {
     entry: './src/assets/js/main.js',
-    plugins: [new ESLintPlugin()],
-    
+    plugins: [
+        new ESLintPlugin(),
+    ],
     output: {
         path: __dirname + '/dist/assets/js',
-        filename: 'bundle.js'
+        filename: 'bundle.js',
     },
-    
     module: {
         rules: [
             {
@@ -17,13 +18,13 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['@babel/preset-env']
-                    }
-                }
-            }
-        ]
+                        presets: ['@babel/preset-env'],
+                    },
+                },
+            },
+        ],
     },
     resolve: {
         extensions: ['.js'], // Add this to resolve .js files automatically
-    }
+    },
 };

@@ -1,13 +1,2 @@
-
-// @forward 'partials/variables';
-
-// @forward 'partials/bi';
-
-// @forward 'partials/app';
-
-@forward 'partials/base';
-
-// @forward 'partials/global';
-
-@forward 'partials/header';
-
+@forward 'modules/index';
+@forward 'projects/index';
