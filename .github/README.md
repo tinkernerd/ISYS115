@@ -1,3 +1,9 @@
+> ⚠️ **This project is temporarily on hold!** ⚠️
+> 
+> I don't have the time or energy to update this right now but I will get back to it soon.
+> If you want to fix some of the parts and improve it, go ahead
+
+
 # ISYS 115
 
 Welcome to the **ISYS 115** project! This repository contains the source code for my course project, which includes multiple interactive features and showcases modern web development techniques. Dive into the code, contribute, or simply explore the live site to see it in action.
