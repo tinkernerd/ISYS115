@@ -133,6 +133,9 @@ This project is licensed under [MIT License](LICENSE). Feel free to use, modify,
 - [ ] Optimize SCSS and JavaScript for better performance.
 - [ ] Improve documentation for contributors.
 
+## Upgrade in the future?
+- [ ] Switch to [Water.css](https://github.com/kognise/water.css)?
+
 ---
 
 If you have any questions or suggestions, feel free to reach out or open an issue.  
